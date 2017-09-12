@@ -515,9 +515,9 @@ jobs:
   plan:
   - aggregate:
     - get: reduced-frequency-trigger
-      trigger: {{reduced-frequency-trigger-flag}}
+      trigger: ((reduced-frequency-trigger-flag))
     - get: gpdb_src
-      trigger: {{gpdb_src-trigger-flag}}
+      trigger: ((gpdb_src-trigger-flag))
     - get: gpaddon_src
     - get: pxf_src
       trigger: true
@@ -550,9 +550,9 @@ jobs:
   plan:
   - aggregate:
     - get: reduced-frequency-trigger
-      trigger: {{reduced-frequency-trigger-flag}}
+      trigger: ((reduced-frequency-trigger-flag))
     - get: gpdb_src
-      trigger: {{gpdb_src-trigger-flag}}
+      trigger: ((gpdb_src-trigger-flag))
     - get: centos-gpdb-dev-6
   - task: compile_gpdb
     image: centos-gpdb-dev-6
@@ -564,9 +564,9 @@ jobs:
   plan:
   - aggregate:
     - get: reduced-frequency-trigger
-      trigger: {{reduced-frequency-trigger-flag}}
+      trigger: ((reduced-frequency-trigger-flag))
     - get: gpdb_src
-      trigger: {{gpdb_src-trigger-flag}}
+      trigger: ((gpdb_src-trigger-flag))
     - get: gpaddon_src
     - get: pxf_src
       trigger: true
@@ -598,9 +598,9 @@ jobs:
   plan:
   - aggregate:
     - get: reduced-frequency-trigger
-      trigger: {{reduced-frequency-trigger-flag}}
+      trigger: ((reduced-frequency-trigger-flag))
     - get: gpdb_src
-      trigger: {{gpdb_src-trigger-flag}}
+      trigger: ((gpdb_src-trigger-flag))
     - get: gpaddon_src
     - get: pxf_src
   - task: compile_gpdb
@@ -628,9 +628,9 @@ jobs:
   plan:
   - aggregate:
     - get: reduced-frequency-trigger
-      trigger: {{reduced-frequency-trigger-flag}}
+      trigger: ((reduced-frequency-trigger-flag))
     - get: gpdb_src
-      trigger: {{gpdb_src-trigger-flag}}
+      trigger: ((gpdb_src-trigger-flag))
       tags: ["gpdb5_wix_external_worker"]
     - get: gpaddon_src
       tags: ["gpdb5_wix_external_worker"]
@@ -952,7 +952,7 @@ jobs:
 - name: DPM_backup_43_restore_5
   plan:
   - get: nightly-trigger
-    trigger: {{nightly-trigger-flag}}
+    trigger: ((nightly-trigger-flag))
     tags: ["gpdb5_ccp_external_worker"]
   - aggregate:
     - get: gpdb_src
@@ -965,7 +965,7 @@ jobs:
       tags: ["gpdb5_ccp_external_worker"]
       resource: bin_gpdb_centos6
       passed: [compile_gpdb_centos6]
-      trigger: {{reduced-frequency-trigger-flag}}
+      trigger: ((reduced-frequency-trigger-flag))
     - get: gpdb4_binary
       tags: ["gpdb5_ccp_external_worker"]
       resource: bin_gpdb4_centos6
@@ -1512,13 +1512,13 @@ jobs:
 - name: DPM_netbackup77
   plan:
   - get: nightly-trigger
-    trigger: {{nightly-trigger-flag}}
+    trigger: ((nightly-trigger-flag))
   - aggregate: &post_packaging_gets_trigger_based_on_flag
     - get: gpdb_src
       params: {submodules: none}
       tags: ["gpdb5-pulse-worker"]
       passed: [gpdb_rc_packaging_centos]
-      trigger: {{reduced-frequency-trigger-flag}}
+      trigger: ((reduced-frequency-trigger-flag))
     - get: gpdb_src_tinc_tarball
       tags: ["gpdb5-pulse-worker"]
       passed: [gpdb_rc_packaging_centos]
@@ -1553,7 +1553,7 @@ jobs:
 - name: DPM_backup-restore-ddboost
   plan:
   - get: nightly-trigger
-    trigger: {{nightly-trigger-flag}}
+    trigger: ((nightly-trigger-flag))
   - aggregate: *post_packaging_gets_trigger_based_on_flag
   - task: trigger_pulse
     tags: ["gpdb5-pulse-worker"]
@@ -1640,7 +1640,7 @@ jobs:
 - name: MM_gpexpand
   plan:
   - get: nightly-trigger
-    trigger: {{nightly-trigger-flag}}
+    trigger: ((nightly-trigger-flag))
   - aggregate: *post_packaging_gets_trigger_based_on_flag
   - task: trigger_pulse
     tags: ["gpdb5-pulse-worker"]
@@ -1660,7 +1660,7 @@ jobs:
 - name: DPM_gptransfer-43x-to-5x
   plan:
   - get: nightly-trigger
-    trigger: {{nightly-trigger-flag}}
+    trigger: ((nightly-trigger-flag))
   - aggregate: *post_packaging_gets_trigger_based_on_flag
   - task: trigger_pulse
     tags: ["gpdb5-pulse-worker"]
@@ -1752,7 +1752,7 @@ jobs:
 - name: cs-filerep-end-to-end
   plan:
   - get: nightly-trigger
-    trigger: {{nightly-trigger-flag}}
+    trigger: ((nightly-trigger-flag))
   - aggregate: *post_packaging_gets_trigger_based_on_flag
   - task: trigger_pulse
     tags: ["gpdb5-pulse-worker"]
@@ -1772,7 +1772,7 @@ jobs:
 - name: cs-aoco-compression
   plan:
   - get: nightly-trigger
-    trigger: {{nightly-trigger-flag}}
+    trigger: ((nightly-trigger-flag))
   - aggregate: *post_packaging_gets_trigger_based_on_flag
   - task: trigger_pulse
     tags: ["gpdb5-pulse-worker"]
