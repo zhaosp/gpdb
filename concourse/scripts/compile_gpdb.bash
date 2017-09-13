@@ -195,10 +195,10 @@ function _main() {
       # require `./configure --with-zlib`.
       unittest_check_gpdb
   fi
-  if [ "$TARGET_OS" == "centos" ]; then
-      # Build pxf(server) only for centos
-      build_pxf
-  fi
+  # if [ "$TARGET_OS" == "centos" ]; then
+  #     # Build pxf(server) only for centos
+  #     build_pxf
+  # fi
   export_gpdb
   export_gpdb_extensions
   export_gpdb_win32_ccl
